@@ -12,5 +12,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/")
 public class Restapi {
 
+    private Serwis serwis;
 
+    @Autowired
+    public Restapi(Serwis sampleService) {
+        this.serwis = sampleService;
+    }
+
+    @GetMapping("reverse/{characters}")
+    public String getReversedString(@PathVariable String characters) {
+        return serwis.reverse(characters);
+    }
 }
